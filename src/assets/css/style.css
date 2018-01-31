@@ -1,13 +1,93 @@
-.left{
-  float: left;
+.left {
+    float: left;
 }
-.right{
-  float: right;
+
+.right {
+    float: right;
 }
-*{
-  padding:0;
-  margin:0;
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-ul,li{
-  list-style: none;
+
+a {
+    text-decoration: none;
+    color: #333
+}
+
+body {
+    max-width: 750px;
+    margin: 0 auto
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.mt44 {
+    margin-top: 44px;
+}
+
+.mt60 {
+    margin-top: 60px;
+}
+
+.router-link-active {
+    color: #00aa98;
+    text-decoration: none;
+}
+
+.mint-tab-item-label a {
+    display: block;
+}
+
+.iconbar {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.icon-playing {
+    background: url(../images/ball.png) center no-repeat;
+    background-size: 30px;
+}
+
+.router-link-active .icon-playing-active {
+    background: url(../images/ball-active.png) center no-repeat;
+    background-size: 30px;
+}
+
+.icon-news {
+    background: url(../images/news.png) center no-repeat;
+    background-size: 30px;
+}
+
+.router-link-active .icon-news-active {
+    background: url(../images/news-active.png) center no-repeat;
+    background-size: 30px;
+}
+
+.icon-rank {
+    background: url(../images/rank.png) center no-repeat;
+    background-size: 30px;
+}
+
+.router-link-active .icon-rank-active {
+    background: url(../images/rank-active.png) center no-repeat;
+    background-size: 30px;
+}
+
+.icon-stats {
+    background: url(../images/stats.png) center no-repeat;
+    background-size: 30px;
+}
+
+.router-link-active .icon-stats-active {
+    background: url(../images/stats-active.png) center no-repeat;
+    background-size: 30px;
 }

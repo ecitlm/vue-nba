@@ -1,21 +1,40 @@
 <template>
-  <div id="app">
-    <router-view/>
+<div id="app">
+    <mt-header fixed  :title="$route.meta.title">
+        <mt-button  icon="back" slot="left"></mt-button>
+    </mt-header>
+
+   <div class="mt44">
+      <router-view/>
+   </div>
+
+   <div class="navbar" v-show="$route.meta.navShow">
+       <div class="mt60"></div>
+        <tab-bar></tab-bar>
+   </div>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'App'
-}
+    import tabBar from './components/tabBar'
+    export default {
+        name: 'App',
+        data() {
+            return {
+                navShow: true
+            }
+        },
+        components: {
+            tabBar
+        },
+        deactivated() {
+            console.log(this.$route)
+            this.navShow = this.$route.meta.navShow
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+    .mint-header {
+        background: #00aa98;
+    }
 </style>
