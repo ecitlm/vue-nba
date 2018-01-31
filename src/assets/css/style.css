@@ -1,0 +1,13 @@
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+*{
+  padding:0;
+  margin:0;
+}
+ul,li{
+  list-style: none;
+}
