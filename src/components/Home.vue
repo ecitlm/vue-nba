@@ -8,13 +8,13 @@
                   <p class="team-score">{{list.visitscore}}</p>
                   <p class="team-name">{{list.visitteamname}}</p>
                 </div>
-      
+
               </div>
               <div class="time left">
-                {{list.match_status || list.time}}{{list.match_time}}
+                {{list.match_status || list.time}} <br>{{list.match_time}}
               </div>
               <div class="team right">
-      
+
                 <div class="team-info left">
                   <p class="team-score">{{list.homescore}}</p>
                   <p class="team-name ">{{list.hometeamname}}</p>
@@ -26,7 +26,7 @@
               </div>
             </li>
           </ul>
-          
+
         </div>
       </template>
 
@@ -76,32 +76,39 @@
         padding: 15px 0;
         overflow: hidden;
     }
-    
+
     .team,
     .time {
         width: 33%;
+
     }
-    
+    .time {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .team img {
         width: 60px;
         height: 60px;
         display: block;
     }
-    
+
     .team-score,
     .team-name {
         line-height: 30px;
+      font-size:14px;
     }
-    
+
     .team-score {
         font-size: 20px;
     }
-    
+
     .time {
         text-align: center;
         height: 60px;
     }
-    
+
     .team-news {
         width: 100%;
         float: left;
@@ -112,7 +119,7 @@
         overflow: hidden;
         text-align: left;
     }
-    
+
     .iangle {
         padding: 1px 5px;
         background: #167dc6;

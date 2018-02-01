@@ -1,11 +1,13 @@
 <template>
 <div id="app">
     <mt-header fixed  :title="$route.meta.title">
-        <mt-button  icon="back" slot="left"></mt-button>
+        <mt-button  icon="back" slot="left" onclick="window.history.back()"></mt-button>
     </mt-header>
 
    <div class="mt44">
+     <keep-alive>
       <router-view/>
+     </keep-alive>
    </div>
 
    <div class="navbar" v-show="$route.meta.navShow">
