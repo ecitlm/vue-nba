@@ -29,7 +29,6 @@
             tabBar
         },
         deactivated() {
-            console.log(this.$route)
             this.navShow = this.$route.meta.navShow
         }
     }

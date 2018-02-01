@@ -12,5 +12,9 @@ export default {
   news_comments(params){
     return fetch.fetchPost('Nba.news_comments', params || {});
   }
+  ,
+  team_rank(params){
+    return fetch.fetchPost('Nba.team_rank', params || {});
+  }
 
 }
