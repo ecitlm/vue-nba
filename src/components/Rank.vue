@@ -58,74 +58,84 @@
 
 
 <script>
-  import Vue from 'vue'
-  import {Navbar, TabItem} from 'mint-ui';
-  import api from '../utils/api'
-  Vue.component(Navbar.name, Navbar);
-  Vue.component(TabItem.name, TabItem);
-  import {Indicator} from 'mint-ui';
-  export default {
-    data() {
-      return {
-        selected: "1",
-        data:[]
-      }
-    },
-    created() {
+    import Vue from 'vue'
+    import {
+        Navbar,
+        TabItem
+    } from 'mint-ui';
+    import api from '../utils/api'
+    Vue.component(Navbar.name, Navbar);
+    Vue.component(TabItem.name, TabItem);
+    import {
+        Indicator
+    } from 'mint-ui';
+    export default {
+        data() {
+            return {
+                selected: "1",
+                data: []
+            }
+        },
+        created() {
 
-      this.team_rank();
-    },
-    methods:{
-      team_rank:function () {
-        Indicator.open('加载中...');
-        api.team_rank()
-          .then(function (res) {
-            console.log(res)
-            this.data=res.data;
-            Indicator.close();
-          }.bind(this)).catch(function (error) {
-          console.log(error)
-        })
+            this.team_rank();
+        },
+        methods: {
+            team_rank: function() {
+                Indicator.open('加载中...');
+                api.team_rank()
+                    .then(function(res) {
+                        console.log(res)
+                        this.data = res.data;
+                        Indicator.close();
+                    }.bind(this)).catch(function(error) {
+                        console.log(error)
+                    })
 
-      }
+            }
 
+        }
     }
-  }
 </script>
 
 
 <style scoped>
-  .mint-navbar .mint-tab-item.is-selected {
-    color: #00aa98;
-    border-bottom: 0;
-  }
-
-  table {
-    width: 100%;
-    text-align: center;
-    font-size:12px;
-  }
-
-  .thead {
-    background: #f5f5f5;
-  }
-
-  .thead tr td {
-    width: 20%;
-    text-align: center;
-    border-collapse: collapse;
-    line-height: 40px
-  }
-  .tbody tr{
-    border-bottom:1px solid #e3e3e3;
-    line-height:30px;
-
-  }
-
-  .tbody tr:nth-child(even) {
-    background: #f5f5f5;
-  }
-  .tbody i{
-    margin-left:5px;
-  }
+    .mint-navbar .mint-tab-item.is-selected {
+        color: #00aa98;
+        border-bottom: 0;
+    }
+    
+    .rank .mint-tab-item-label {
+        font-size: 16px !important;
+    }
+    
+    table {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .thead {
+        background: #f5f5f5;
+    }
+    
+    .thead tr td {
+        width: 20%;
+        text-align: center;
+        border-collapse: collapse;
+        line-height: 40px
+    }
+    
+    .tbody tr {
+        border-bottom: 1px solid #e3e3e3;
+        line-height: 30px;
+    }
+    
+    .tbody tr:nth-child(even) {
+        background: #f5f5f5;
+    }
+    
+    .tbody i {
+        margin-left: 5px;
+    }
 </style>

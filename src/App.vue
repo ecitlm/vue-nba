@@ -37,5 +37,6 @@
 <style>
     .mint-header {
         background: #00aa98;
+        font-size: 18px;
     }
 </style>

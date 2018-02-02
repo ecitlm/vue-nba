@@ -32,94 +32,100 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import {Navbar, TabItem} from 'mint-ui';
-  import api from '../utils/api'
+    import Vue from 'vue'
+    import {
+        Navbar,
+        TabItem
+    } from 'mint-ui';
+    import api from '../utils/api'
 
-  Vue.component(Navbar.name, Navbar);
-  Vue.component(TabItem.name, TabItem);
-  import {Indicator} from 'mint-ui';
+    Vue.component(Navbar.name, Navbar);
+    Vue.component(TabItem.name, TabItem);
+    import {
+        Indicator
+    } from 'mint-ui';
 
-  export default {
-    data() {
-      return {
-        current: "pt",
-        name: "得分",
-        data: [],
-        stats: []
-      }
-    },
-    created() {
-      this.player_top()
-    },
-    methods: {
-      tabNav: function (current, name) {
-        this.current = current
-        this.stats = this.data[current]
-      },
-      player_top: function () {
-        Indicator.open('加载中...');
-        api.player_top()
-          .then(function (res) {
-            console.log(res)
-            this.data = res.data;
-            this.stats = res.data.pt
-            console.log(this.stats)
-            Indicator.close();
-          }.bind(this)).catch(function (error) {
-          console.log(error)
-        })
+    export default {
+        data() {
+            return {
+                current: "pt",
+                name: "得分",
+                data: [],
+                stats: []
+            }
+        },
+        created() {
+            this.player_top()
+        },
+        methods: {
+            tabNav: function(current, name) {
+                this.current = current
+                this.stats = this.data[current]
+            },
+            player_top: function() {
+                Indicator.open('加载中...');
+                api.player_top()
+                    .then(function(res) {
+                        console.log(res)
+                        this.data = res.data;
+                        this.stats = res.data.pt
+                        console.log(this.stats)
+                        Indicator.close();
+                    }.bind(this)).catch(function(error) {
+                        console.log(error)
+                    })
 
-      }
+            }
 
+        }
     }
-  }
 </script>
 <style>
-  ul.tab-header {
-    width: 100%;
-    padding: 10px 0;
-    float: left;
-  }
-
-  .tab-header li {
-    width: 20%;
-    float: left;
-    text-align: center;
-    font-size: 12px;
-    line-height: 24px;
-  }
-
-  li.active {
-    color: #00aa98;
-  }
-
-  .stats-table {
-    text-align: center;
-    width: 100%;
-  }
-
-  .stats-table th {
-    background: #f5f5f5;
-    font-size: 14px;
-    line-height: 30px;
-    font-weight: 400;
-    width: 33.33%;
-  }
-
-  .stats-table tr td {
-    font-size: 12px;
-    line-height: 26px;
-  }
-
-  .stats-table th:first-child, .stats-table tbody td:first-child {
-    text-align: left;
-    box-sizing: border-box;
-    padding-left: 20px;
-    overflow: hidden
-  }
-
-  .stats-table tr:nth-child(even) {
-    background: #f5f5f5;
-  }
+    ul.tab-header {
+        width: 100%;
+        padding: 10px 0;
+        float: left;
+    }
+    
+    .tab-header li {
+        width: 20%;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    
+    li.active {
+        color: #00aa98;
+    }
+    
+    .stats-table {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .stats-table th {
+        background: #f5f5f5;
+        font-size: 14px;
+        line-height: 30px;
+        font-weight: 400;
+        width: 33.33%;
+    }
+    
+    .stats-table tr td {
+        font-size: 14px;
+        line-height: 32px;
+    }
+    
+    .stats-table th:first-child,
+    .stats-table tbody td:first-child {
+        text-align: left;
+        box-sizing: border-box;
+        padding-left: 20px;
+        overflow: hidden
+    }
+    
+    .stats-table tr:nth-child(even) {
+        background: #f5f5f5;
+    }
 </style>
