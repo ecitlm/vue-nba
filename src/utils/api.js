@@ -1,5 +1,8 @@
 import fetch from './api.config.js'
 export default {
+  http(url,params){
+    return fetch.fetchPost(url, params || {});
+  },
   nab_schedule(params) {
     return fetch.fetchPost('Nba.schedule', params || {});
   },
@@ -15,6 +18,9 @@ export default {
   ,
   team_rank(params){
     return fetch.fetchPost('Nba.team_rank', params || {});
+  },
+  player_top(params){
+    return fetch.fetchPost('Nba.player_top', params || {});
   }
 
 }

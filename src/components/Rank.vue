@@ -1,5 +1,5 @@
 <template>
-  <div class="rank">
+  <div class="rank" v-if="data.length!=0">
     <mt-navbar v-model="selected">
       <mt-tab-item id="1">东部排名</mt-tab-item>
       <mt-tab-item id="2">西部排名</mt-tab-item>
@@ -121,8 +121,10 @@
     line-height:30px;
 
   }
-  .tbody  tr:nth-child(even){
-    background:#f5f5f5;}
+
+  .tbody tr:nth-child(even) {
+    background: #f5f5f5;
+  }
   .tbody i{
     margin-left:5px;
   }

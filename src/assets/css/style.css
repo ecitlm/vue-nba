@@ -54,40 +54,40 @@ li {
 
 .icon-playing {
     background: url(../images/ball.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .router-link-active .icon-playing-active {
     background: url(../images/ball-active.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .icon-news {
     background: url(../images/news.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .router-link-active .icon-news-active {
     background: url(../images/news-active.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .icon-rank {
     background: url(../images/rank.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .router-link-active .icon-rank-active {
     background: url(../images/rank-active.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .icon-stats {
     background: url(../images/stats.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }
 
 .router-link-active .icon-stats-active {
     background: url(../images/stats-active.png) center no-repeat;
-    background-size: 30px;
+    background-size: 28px;
 }

@@ -20,9 +20,12 @@
           球队战绩
         </router-link>
       </mt-tab-item>
+
       <mt-tab-item id="数据统计">
-        <i class="iconbar icon-stats icon-stats-active"></i>
-        数据统计
+        <router-link to="/statistics">
+          <i class="iconbar icon-stats icon-stats-active"></i>
+          数据统计
+        </router-link>
       </mt-tab-item>
     </mt-tabbar>
   </div>

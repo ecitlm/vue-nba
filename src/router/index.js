@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import News from '@/components/News'
 import Rank from '@/components/Rank'
 import newsDetail from '@/components/newsDetail'
+import Statistics from '@/components/Statistics'
 
 Vue.use(Router)
 
@@ -43,6 +44,15 @@ export default new Router({
       meta: {
         navShow: true,
         title: "球队战绩"
+      }
+    },
+    {
+      path: '/statistics',
+      name: 'Statistics',
+      component: Statistics,
+      meta: {
+        navShow: true,
+        title: "数据统计"
       }
     },
     {
