@@ -5,6 +5,7 @@ import News from '@/components/News'
 import Rank from '@/components/Rank'
 import newsDetail from '@/components/newsDetail'
 import Statistics from '@/components/Statistics'
+import playerDetail from '@/components/playerDetail'
 
 Vue.use(Router)
 
@@ -53,6 +54,14 @@ export default new Router({
       meta: {
         navShow: true,
         title: "数据统计"
+      }
+    },
+    {
+      path: '/player_detail',
+      name: 'playerDetail',
+      component: playerDetail,
+      meta: {
+        title: "球员数据"
       }
     },
     {

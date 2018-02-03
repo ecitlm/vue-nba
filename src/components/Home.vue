@@ -75,41 +75,45 @@
         border-bottom: 1px solid #e3e3e3;
         overflow: hidden;
         box-sizing: border-box;
-        padding: 15px
+        padding: 15px 10px
     }
-    
-    .team,
+
+
     .time {
-        width: 33%;
+        width: 28%;
     }
-    
+
+    .team {
+      width: 36%;
+    }
+
     .time {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .team img {
         width: 65px;
         height: 65px;
         display: block;
     }
-    
+
     .team-score,
     .team-name {
         line-height: 30px;
-        font-size: 14px;
+        font-size: 13px;
     }
-    
+
     .team-score {
         font-size: 20px;
     }
-    
+
     .time {
         text-align: center;
         height: 65px;
     }
-    
+
     .team-news {
         width: 100%;
         float: left;
@@ -120,7 +124,7 @@
         overflow: hidden;
         text-align: left;
     }
-    
+
     .iangle {
         padding: 1px 5px;
         background: #167dc6;

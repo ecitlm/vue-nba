@@ -1,0 +1,241 @@
+<template>
+  <div class="player_detail">
+    <div class="player_header">
+      <img src="https://nba.sports.qq.com/media/img/players/head/260x190/202681.png" class="left">
+      <h3>凯里欧文</h3>
+      <p>后卫(11号)/波士顿凯尔特人</p>
+    </div>
+    <div class="player-stats">
+      <div class="item">
+        <strong>100</strong>
+        <p>得分</p>
+      </div>
+      <div class="item">
+        <strong>100</strong>
+        <p>篮板</p>
+      </div>
+      <div class="item">
+        <strong>100</strong>
+        <p>助攻</p>
+      </div>
+      <div class="item">
+        <strong>100</strong>
+        <p>抢断</p>
+      </div>
+    </div>
+    <div class="palyer-info-data">
+      <h3>信息</h3>
+      <div class="item">
+        <span>生日</span>
+        <p>1991-08-11</p>
+      </div>
+
+      <div class="item">
+        <span>出生地</span>
+        <p>1991-08-11</p>
+      </div>
+
+      <div class="item">
+        <span>薪资</span>
+        <p>1991</p>
+      </div>
+      <div class="item">
+        <span>身高/体重</span>
+        <p>1991</p>
+      </div>
+      <div class="item-glass">选秀:</div>
+    </div>
+
+    <div class="season-data">
+      <h3>赛季数据</h3>
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>
+            <p>52</p>
+            出场数
+          </td>
+          <td>
+            <p>52</p>
+            首发数
+          </td>
+          <td>
+            <p>52</p>
+            时间
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>52</p>
+            投篮
+          </td>
+          <td>
+            <p>52</p>
+            三分
+          </td>
+          <td>
+            <p>52</p>
+            罚球
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>52</p>
+            前篮板
+          </td>
+          <td>
+            <p>52</p>
+            后篮板
+          </td>
+          <td>
+            <p>52</p>
+            抢断
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+
+  </div>
+</template>
+<script>
+  import Vue from 'vue'
+  import {
+    Navbar,
+    TabItem
+  } from 'mint-ui';
+  import api from '../utils/api'
+
+  Vue.component(Navbar.name, Navbar);
+  Vue.component(TabItem.name, TabItem);
+  import {
+    Indicator
+  } from 'mint-ui';
+
+  export default {
+    data() {
+      return {
+
+        list: [],
+      }
+    },
+    created() {
+      this.player_detail()
+    },
+    methods: {
+      player_detail: function() {
+        Indicator.open('加载中...');
+        api.player_detail({
+          playerid: this.$route.query.playerid
+        })
+          .then(function(res) {
+            console.log(res)
+            this.list=res.data
+            Indicator.close();
+          }.bind(this)).catch(function(error) {
+          console.log(error)
+        })
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .player_header {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 15px;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .player_header img {
+    width: 110px;
+    margin-right: 15px
+
+  }
+
+  .player_header h3 {
+    line-height: 40px;
+    font-size: 18px;
+  }
+
+  .player_header p {
+    line-height: 30px;
+    font-size: 12px;
+  }
+
+  .player-stats {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+
+  }
+
+  .player-stats .item {
+    flex: 1;
+    border-right: 1px solid #e3e3e3;
+  }
+
+  .player-stats .item strong {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .player-stats .item p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .player-stats .item:last-child {
+    border-right: 0
+
+  }
+
+  .palyer-info-data h3,.season-data h3 {
+    line-height: 36px;
+    background: #EBECEF;
+    box-sizing: border-box;
+    padding-left: 15px;
+    font-size: 16px;
+  }
+  .palyer-info-data .item{
+    width:50%;
+    float: left;
+    padding:0  15px 5px 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom:1px solid #e3e3e3;
+
+  }
+  .palyer-info-data .item span{
+    color:#666 ;
+    line-height:28px;
+    font-size:14px;
+  }
+  .palyer-info-data .item-glass{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left:15px;
+    line-height:30px;
+    font-size:14px;
+  }
+  .season-data table{
+    width:100%;
+    text-align: center;
+    border-top: 1px solid #e3e3e3;
+  }
+
+  .season-data table tr td{
+    border-bottom: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    padding:5px 0;
+    width:33.33%;
+  }
+</style>

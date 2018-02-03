@@ -21,10 +21,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(item,index) in stats.record">
-        <td>{{index + 1}}.{{item.playername}}</td>
-        <td>{{item.avgdata}}</td>
-        <td>{{item.totaldata}}</td>
+      <tr v-for="(item,index) in stats.record" @click="linkPlayerDetail(item.playerid)">
+         <td>{{index + 1}}.{{item.playername}}</td>
+         <td>{{item.avgdata}}</td>
+         <td>{{item.totaldata}}</td>
       </tr>
       </tbody>
     </table>
@@ -74,8 +74,11 @@
                     }.bind(this)).catch(function(error) {
                         console.log(error)
                     })
-
-            }
+            },
+          //link to player_detail
+          linkPlayerDetail:function (id) {
+            this.$router.push({path: '/player_detail', query: {id: id}});
+          }
 
         }
     }
@@ -86,7 +89,7 @@
         padding: 10px 0;
         float: left;
     }
-    
+
     .tab-header li {
         width: 20%;
         float: left;
@@ -94,16 +97,16 @@
         font-size: 14px;
         line-height: 24px;
     }
-    
+
     li.active {
         color: #00aa98;
     }
-    
+
     .stats-table {
         text-align: center;
         width: 100%;
     }
-    
+
     .stats-table th {
         background: #f5f5f5;
         font-size: 14px;
@@ -111,12 +114,16 @@
         font-weight: 400;
         width: 33.33%;
     }
-    
+
     .stats-table tr td {
         font-size: 14px;
         line-height: 32px;
     }
-    
+
+
+    .stats-table tr a td{
+      width:33.33%;
+    }
     .stats-table th:first-child,
     .stats-table tbody td:first-child {
         text-align: left;
@@ -124,7 +131,7 @@
         padding-left: 20px;
         overflow: hidden
     }
-    
+
     .stats-table tr:nth-child(even) {
         background: #f5f5f5;
     }

@@ -21,6 +21,9 @@ export default {
   },
   player_top(params){
     return fetch.fetchPost('Nba.player_top', params || {});
-  }
+  },
+  player_detail(params){
+    return fetch.fetchPost('Nba.player_detail', params || {});
+  },
 
 }

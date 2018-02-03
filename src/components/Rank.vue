@@ -1,9 +1,12 @@
 <template>
   <div class="rank" v-if="data.length!=0">
-    <mt-navbar v-model="selected">
-      <mt-tab-item id="1">东部排名</mt-tab-item>
-      <mt-tab-item id="2">西部排名</mt-tab-item>
-    </mt-navbar>
+    <div id="tabitem">
+      <mt-navbar v-model="selected">
+        <mt-tab-item id="1">东部排名</mt-tab-item>
+        <mt-tab-item id="2">西部排名</mt-tab-item>
+      </mt-navbar>
+    </div>
+
 
     <!-- tab-container -->
     <mt-tab-container v-model="selected">
@@ -104,37 +107,37 @@
         color: #00aa98;
         border-bottom: 0;
     }
-    
-    .rank .mint-tab-item-label {
+
+    #tabitem {
         font-size: 16px !important;
     }
-    
+
     table {
         width: 100%;
         text-align: center;
         font-size: 14px;
     }
-    
+
     .thead {
         background: #f5f5f5;
     }
-    
+
     .thead tr td {
         width: 20%;
         text-align: center;
         border-collapse: collapse;
         line-height: 40px
     }
-    
+
     .tbody tr {
         border-bottom: 1px solid #e3e3e3;
         line-height: 30px;
     }
-    
+
     .tbody tr:nth-child(even) {
         background: #f5f5f5;
     }
-    
+
     .tbody i {
         margin-left: 5px;
     }
