@@ -65,15 +65,15 @@
         </tr>
         <tr>
           <td>
-            <p>{{(list.fgPCT*100).toFixed(1)}}%</p>
+            <p>{{(list.fgPCT * 100).toFixed(1)}}%</p>
             投篮
           </td>
           <td>
-            <p> {{(list.threesPCT*100).toFixed(1)}}%</p>
+            <p> {{(list.threesPCT * 100).toFixed(1)}}%</p>
             三分
           </td>
           <td>
-            <p> {{(list.ftPCT*100).toFixed(1)}}%</p>
+            <p> {{(list.ftPCT * 100).toFixed(1)}}%</p>
             罚球
           </td>
         </tr>
@@ -115,27 +115,26 @@
   export default {
     data() {
       return {
-
         list: [],
       }
     },
     created() {
     },
     activated() {
-      this.list=[]
+      this.list = []
       this.player_detail()
     },
     methods: {
-      player_detail: function() {
+      player_detail: function () {
         Indicator.open('加载中...');
         api.player_detail({
-          playerid: this.$route.query.playerid || 4244
+          playerid: this.$route.query.playerid
         })
-          .then(function(res) {
+          .then(function (res) {
             console.log(res)
-            this.list=res.data
+            this.list = res.data
             Indicator.close();
-          }.bind(this)).catch(function(error) {
+          }.bind(this)).catch(function (error) {
           console.log(error)
         })
       }
@@ -199,46 +198,50 @@
 
   }
 
-  .palyer-info-data h3,.season-data h3 {
+  .palyer-info-data h3, .season-data h3 {
     line-height: 36px;
     background: #EBECEF;
     box-sizing: border-box;
     padding-left: 15px;
     font-size: 16px;
   }
-  .palyer-info-data .item{
-    width:50%;
+
+  .palyer-info-data .item {
+    width: 50%;
     float: left;
-    padding:0  15px 5px 15px;
+    padding: 0 15px 5px 15px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border-bottom:1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
 
   }
-  .palyer-info-data .item span{
-    color:#666 ;
-    line-height:28px;
-    font-size:14px;
+
+  .palyer-info-data .item span {
+    color: #666;
+    line-height: 28px;
+    font-size: 14px;
   }
-  .palyer-info-data .item-glass{
+
+  .palyer-info-data .item-glass {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding-left:15px;
-    line-height:30px;
-    font-size:14px;
+    padding-left: 15px;
+    line-height: 30px;
+    font-size: 14px;
   }
-  .season-data table{
-    width:100%;
+
+  .season-data table {
+    width: 100%;
     text-align: center;
     border-top: 1px solid #e3e3e3;
   }
 
-  .season-data table tr td{
+  .season-data table tr td {
     border-bottom: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
-    padding:5px 0;
-    width:33.33%;
+    padding: 5px 0;
+    width: 33.33%;
   }
 </style>
