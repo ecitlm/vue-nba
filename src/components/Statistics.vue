@@ -77,7 +77,7 @@
             },
           //link to player_detail
           linkPlayerDetail:function (id) {
-            this.$router.push({path: '/player_detail', query: {id: id}});
+            this.$router.push({path: '/player_detail', query: { playerid: id}});
           }
 
         }

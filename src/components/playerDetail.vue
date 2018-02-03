@@ -1,25 +1,25 @@
 <template>
-  <div class="player_detail">
+  <div class="player_detail" v-if="list.length!=0">
     <div class="player_header">
-      <img src="https://nba.sports.qq.com/media/img/players/head/260x190/202681.png" class="left">
-      <h3>凯里欧文</h3>
-      <p>后卫(11号)/波士顿凯尔特人</p>
+      <img :src="list.portrait" class="left">
+      <h3>{{list.cnname}}</h3>
+      <p>{{list.position}}({{list.number}}) / {{list.teamname}}</p>
     </div>
     <div class="player-stats">
       <div class="item">
-        <strong>100</strong>
+        <strong>{{list.pointsPG}}</strong>
         <p>得分</p>
       </div>
       <div class="item">
-        <strong>100</strong>
+        <strong>{{list.reboundsPG}}</strong>
         <p>篮板</p>
       </div>
       <div class="item">
-        <strong>100</strong>
+        <strong>{{list.assistsPG}}</strong>
         <p>助攻</p>
       </div>
       <div class="item">
-        <strong>100</strong>
+        <strong>{{list.stealsPG}}</strong>
         <p>抢断</p>
       </div>
     </div>
@@ -27,23 +27,23 @@
       <h3>信息</h3>
       <div class="item">
         <span>生日</span>
-        <p>1991-08-11</p>
+        <p>{{list.birthdate}}</p>
       </div>
 
       <div class="item">
         <span>出生地</span>
-        <p>1991-08-11</p>
+        <p>{{list.birthplace || "-"}}</p>
       </div>
 
       <div class="item">
         <span>薪资</span>
-        <p>1991</p>
+        <p>{{list.yearsalary || "-"}}</p>
       </div>
       <div class="item">
         <span>身高/体重</span>
-        <p>1991</p>
+        <p>{{list.height}}/{{list.weight}}</p>
       </div>
-      <div class="item-glass">选秀:</div>
+      <div class="item-glass">选秀: {{list.showing}}</div>
     </div>
 
     <div class="season-data">
@@ -51,43 +51,43 @@
       <table cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <p>52</p>
+            <p>{{list.games}}</p>
             出场数
           </td>
           <td>
-            <p>52</p>
+            <p>{{list.gamesStarted}}</p>
             首发数
           </td>
           <td>
-            <p>52</p>
+            <p>{{list.minutesPG}}</p>
             时间
           </td>
         </tr>
         <tr>
           <td>
-            <p>52</p>
+            <p>{{(list.fgPCT*100).toFixed(1)}}%</p>
             投篮
           </td>
           <td>
-            <p>52</p>
+            <p> {{(list.threesPCT*100).toFixed(1)}}%</p>
             三分
           </td>
           <td>
-            <p>52</p>
+            <p> {{(list.ftPCT*100).toFixed(1)}}%</p>
             罚球
           </td>
         </tr>
         <tr>
           <td>
-            <p>52</p>
+            <p>{{list.offensiveReboundsPG}}</p>
             前篮板
           </td>
           <td>
-            <p>52</p>
+            <p>{{list.defensiveReboundsPG}}</p>
             后篮板
           </td>
           <td>
-            <p>52</p>
+            <p>{{list.stealsPG}}</p>
             抢断
           </td>
         </tr>
@@ -120,13 +120,16 @@
       }
     },
     created() {
+    },
+    activated() {
+      this.list=[]
       this.player_detail()
     },
     methods: {
       player_detail: function() {
         Indicator.open('加载中...');
         api.player_detail({
-          playerid: this.$route.query.playerid
+          playerid: this.$route.query.playerid || 4244
         })
           .then(function(res) {
             console.log(res)
