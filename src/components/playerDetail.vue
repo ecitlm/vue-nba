@@ -222,7 +222,9 @@
     line-height: 28px;
     font-size: 14px;
   }
-
+  .palyer-info-data .item p{
+    line-height: 24px;
+  }
   .palyer-info-data .item-glass {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

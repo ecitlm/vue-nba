@@ -9,7 +9,7 @@ import qs from 'qs'
 import md5 from 'md5'
 //axios.defaults.timeout = 5000;
 //axios.defaults.baseURL = 'https://wxapp.it919.cn/?service=';
-const DOMAIN = "https://wxapp.it919.cn/?service=";
+const DOMAIN = "https://bird.ioliu.cn/v1/?url=https://wxapp.it919.cn/?service=";
 const appkey = '6fc18957ce391f84a7ce34ce13cd99c4';
 
 //POST传参序列化
@@ -27,12 +27,13 @@ axios.interceptors.request.use((config) => {
 //获取sign
 var getSign = (params) => {
   var params = params || {}
+  params.appkey = appkey;
   for (var key in params) {
     if (!params[key]) {
       delete params[key];
     }
   }
-  params.appkey = appkey;
+
   var keyArr = Object.keys(params).sort();
   var newObj = {};
   var Kstr = '';
