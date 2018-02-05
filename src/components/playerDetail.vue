@@ -43,7 +43,7 @@
         <span>身高/体重</span>
         <p>{{list.height}}/{{list.weight}}</p>
       </div>
-      <div class="item-glass">选秀: {{list.showing}}</div>
+      <div class="item-grade">选秀: {{list.showing}}</div>
     </div>
 
     <div class="season-data">
@@ -225,7 +225,7 @@
   .palyer-info-data .item p{
     line-height: 24px;
   }
-  .palyer-info-data .item-glass {
+  .palyer-info-data .item-grade {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;

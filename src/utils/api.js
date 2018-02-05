@@ -1,7 +1,7 @@
 import fetch from './api.config.js'
 export default {
-  http(url,params){
-    return fetch.fetchPost(url, params);
+  http(params){
+    return fetch.fetchPost(params.url, params.params);
   },
   nab_schedule(params) {
     return fetch.fetchPost('Nba.schedule', params);

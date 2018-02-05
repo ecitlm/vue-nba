@@ -25,19 +25,19 @@ axios.interceptors.request.use((config) => {
 
 
 //获取sign
-var getSign = (params) => {
+const getSign = (params) => {
   var params = params || {}
   params.appkey = appkey;
-  for (var key in params) {
+  for (let key in params) {
     if (!params[key]) {
       delete params[key];
     }
   }
 
-  var keyArr = Object.keys(params).sort();
-  var newObj = {};
-  var Kstr = '';
-  for (var i in keyArr) {
+  let keyArr = Object.keys(params).sort();
+  let newObj = {};
+  let Kstr = '';
+  for (let i in keyArr) {
     newObj[keyArr[i]] = params[keyArr[i]];
     Kstr += params[keyArr[i]];
   }
@@ -55,7 +55,7 @@ var getSign = (params) => {
 export default {
   //fetchPost  请求方式
   fetchPost: function (url, params) {
-    var params = params || {}
+    var  params = params || {}
     params.timestamp = new Date().valueOf(); //将时间戳加入请求参数data里面
     params.sign = "";
     params.sign = getSign(params); //将签名加入参数里面
