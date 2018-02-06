@@ -125,7 +125,7 @@
       this.player_detail()
     },
     methods: {
-      player_detail: function () {
+      player_detail() {
         Indicator.open('加载中...');
         api.player_detail({
           playerid: this.$route.query.playerid
@@ -224,6 +224,7 @@
   }
   .palyer-info-data .item p{
     line-height: 24px;
+    font-size:12px;
   }
   .palyer-info-data .item-grade {
     -webkit-box-sizing: border-box;

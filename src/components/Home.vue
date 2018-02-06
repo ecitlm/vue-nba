@@ -26,6 +26,8 @@
               </div>
             </li>
           </ul>
+          <div class="refesh-btn" @click="nab_schedule">
+          </div>
 
         </div>
       </template>
@@ -48,10 +50,10 @@
         },
         created() {
             this.nab_schedule();
-            Indicator.open('加载中...');
         },
         methods: {
-            nab_schedule: function() {
+            nab_schedule() {
+              Indicator.open('加载中...');
                 api.nab_schedule()
                     .then(function(res) {
                         console.log(res)
@@ -132,4 +134,28 @@
         font-size: 12px;
         font-style: normal;
     }
+
+    .refesh-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 170, 152, 0.6) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAFJUlEQVR4Xu2bjdEURRCGuyNQIxAiECIQI1AiECMQIlAjECIQIhAiECIQIxAiECJo66F6qL65mZ2Z3dn74O6m6oqv2J2ffvu/p1flwodeOP1yBeAqARkCZvZARP4Qkdci8p2qvtsKkpl9KyJ3/HdLRL70v+PS7MOeb/z3UlVfbd27Nf9IBczsPz8gc39T1V9bi5Sem9n3IvKDiADolvFcRPi9mMGM/CAlACy8NASAmcHZn0XkYQBxC/G5hDwWkWeqipRMGVMAGCD8vYs5h3+ZUZDUAhX5eoE6VAUgnsyQiM0AmNk9EflzgePPnNjXqoqON4eZAQLrokKoUmkAxE+qinqsHqsBcK7/4uKeH+Ctc+npVi75PgCBLSpJxmNVfbQWgVUA+KH+KlhyRPyhqj5de6Clee6hSkCs9ljDAJgZ7gw3yb9xPIFLWzneAs7BBwSMbW4kcdtdapYmDgHgxMN5DFYacP3BVl1sEZ4/d9uD/n8RnmEXhkDoBsCR/1tEMFBp/IOhmumWRoBwYwkI34R5uMi7vZI4AgDER7GH+Hu9G40QNvKuMwaXGkHA49ztWacLADPD70ad+ySITwRWQCBOICBbHE0A3Iej91Hn79yU2NeocfuEJESbgD3IA66DJVoAYNkJRKLe3z+1wWtxMUgC8QJBWRpvVPX20vwWAFjVaPG7xKr3wHu8V1DXxXymBUA8I+7u1k0bvRZobg/wBEkVYOLt2rlHAHikqhjDT36EmkY6a1UKRgBYVReYlbWNom5mSEHKHaq2YASA0TOk97t98toNSvPMDBf4e3hWNN4lANCZ6Eq2nuu9qkZDunW9rvkeJf4bXqaQclSdKgGQaoJdGzVe2jU7bB3QzIgBqEcyimpw1mXxghqQIxxki+cOALkLOUwaVJAOahVnDQBUm9likfcSAIgVauzAZUlAy1CevQRcAWggcJWAloic+/OrBOQc9lQyZVHvVJWq0NmOUi5A2suV14ehqmctJT3J0FH8fE7iUAKAAmhMIz+bStAaxhTFO6umvFJVrqpPPszsQB0nHKAvGTIz4uUfw4YUFad1ZfQSkiUyvdOW3sOofxVfqEkAHI+XIUOtMjNO6plcLGhMWTY36lULn6nBYml5yskKi4TmiHgx07Nd6lU6encEgLw0diNS0ENtIZap2o4RAECx+4JhzUH3mFMohh5s0w2A62BeWn6uqvf3OPisNc2Mu0HuCNOgX+ljb9EQAA4CRcR4937kSmYdfus6hSIo1/g0UFQj22aY660o0SMMt6FsJaxnvl+PxwIo02iSQBrWA+BSkBsVQCBEPnlsUAKj0rv0wWjnwdSwCqQNs0sG/hvVQB2GurJ6uDnyToX4j7dAMwHAK+S9ODeqDhXiD9p3pgHgqlADgYRpl+bImjSYGT1L+XX9Ue/SVAAWQOAR1haV2Px9wZIKuJ/n1je6OqYUG7emAxBAgON5I/PUTu4IROhIL/UpvPBmzSPwdwEgGMZayJmA2Nzb73pOZkpoXrpmX6xX7AqASwMXkEhDDJYi8/ASqEfXJzDOadZK7fJ5T3JaG5GnRXfRC+0OQJAGOIRRajVXpG+CkiuFqynbK31LlJsEQluasruM7skACLZhqbd/xMXn78Jxvg3oIrympqsDodGTu+4iFQCy9AnM0tJwG/Xhw4tVAVcmAW9V9aC20MwFRgmvhKrpExj+RaeTMeNvDGYMqQm2+NFctdmluk1BatibjzkOWmdPAsAMEPda4wrAXsh+LutevAT8DxBRUl9F8t37AAAAAElFTkSuQmCC") center no-repeat;
+      background-size: 25px;
+      border-radius: 50%;
+      position: fixed;
+      right: 10px;
+      bottom: 70px;
+      font-size: 14px;
+      color: #fff;
+      -webkit-transition: 0.4s;
+      -webkit-transition: -webkit-transform 0.4s ease-out;
+      transition: transform 0.4s ease-out;
+      -moz-transition: -moz-transform 0.4s ease-out;
+    }
+
+    .refesh-btn:active {
+      transform: rotateZ(720deg);
+      -webkit-transform: rotateZ(720deg);
+      -moz-transform: rotateZ(720deg);
+    }
+
 </style>

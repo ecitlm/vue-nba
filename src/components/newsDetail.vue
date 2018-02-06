@@ -54,7 +54,7 @@
 
         },
         methods: {
-            news_info: function() {
+            news_info() {
                 Indicator.open('加载中...');
                 api.news_info({
                         docid: this.$route.query.docid
@@ -75,7 +75,7 @@
                         console.log(error)
                     })
             },
-            news_comments: function() {
+            news_comments() {
                 api.news_comments({
                         docid: this.$route.query.docid
                     })
@@ -94,34 +94,34 @@
     .newsDetail {
         box-sizing: border-box;
     }
-    
+
     .content-wrap {
         padding: 10px 15px;
     }
-    
+
     .ptime {
         font-size: 14px;
         color: #666;
         border-bottom: 1px solid #e3e3e3;
         padding: 5px 0;
     }
-    
+
     .newsDetail .title {
         font-size: 18px;
     }
-    
+
     .content {
         font-size: 14px;
         margin-top: 10px;
         text-align: justify;
         width: 100%;
     }
-    
+
     .content img {
         width: 100%;
         max-width: 375px;
     }
-    
+
     .comment-item {
         box-sizing: border-box;
         padding: 10px 15px;
@@ -130,28 +130,28 @@
         width: 100%;
         overflow: hidden;
     }
-    
+
     .comment-item .avatar {
         width: 40px;
         position: absolute;
     }
-    
+
     .comment-item img {
         width: 30px;
         height: 30px;
         border-radius: 50%;
     }
-    
+
     .comment-item .comment-info {
         margin-left: 40px;
         overflow: hidden;
     }
-    
+
     .comments-wrap {
         margin-top: 20px;
         border-top: 5px solid #f5f5f5;
     }
-    
+
     .comments-wrap h3 {
         line-height: 20px;
         font-size: 14px;
@@ -160,7 +160,7 @@
         margin: 10px 0 10px 10px;
         padding-left: 5px;
     }
-    
+
     .comment-item h4 {
         color: #00aa98;
         font-size: 14px;
@@ -171,13 +171,13 @@
         display: block;
         width: 200px;
     }
-    
+
     .comment-item p.comment-time {
         color: #666;
         font-size: 12px;
         padding: 3px 0;
     }
-    
+
     .comment-item p.p-contents {
         color: #333;
         font-size: 12px;

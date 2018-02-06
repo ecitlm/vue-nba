@@ -84,7 +84,7 @@
             this.team_rank();
         },
         methods: {
-            team_rank: function() {
+            team_rank() {
                 Indicator.open('加载中...');
                 api.team_rank()
                     .then(function(res) {
@@ -94,7 +94,6 @@
                     }.bind(this)).catch(function(error) {
                         console.log(error)
                     })
-
             }
 
         }

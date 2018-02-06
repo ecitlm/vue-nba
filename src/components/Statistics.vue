@@ -58,11 +58,11 @@
             this.player_top()
         },
         methods: {
-            tabNav: function(current, name) {
+            tabNav(current, name) {
                 this.current = current
                 this.stats = this.data[current]
             },
-            player_top: function() {
+            player_top() {
                 Indicator.open('加载中...');
                 api.player_top()
                     .then(function(res) {
@@ -76,7 +76,7 @@
                     })
             },
           //link to player_detail
-          linkPlayerDetail:function (id) {
+          linkPlayerDetail (id) {
             this.$router.push({path: '/player_detail', query: { playerid: id}});
           }
 

@@ -44,7 +44,7 @@
             this.new_list();
         },
         methods: {
-            new_list: function() {
+            new_list() {
                 Indicator.open('加载中...');
                 api.new_list({
                         page: this.page
@@ -74,12 +74,12 @@
     .news-thumb {
         flex: 3;
     }
-    
+
     .news-thumb img {
         width: 90px;
         height: 60px;
     }
-    
+
     .news-list li {
         box-sizing: border-box;
         padding: 10px 15px;
@@ -88,31 +88,31 @@
         overflow: hidden;
         display: flex;
     }
-    
+
     .news-list li a {
         display: block;
         display: flex;
     }
-    
+
     .news-info {
         flex: 7;
         padding-left: 5px;
         box-sizing: border-box;
     }
-    
+
     .news-title {
         width: 100%;
         font-size: 14px;
         height: 38px;
         overflow: hidden;
     }
-    
+
     .news-info p {
         color: #666;
         font-size: 12px;
         margin-top: 5px;
     }
-    
+
     .news-info i {
         font-style: normal;
         padding: 2px 20px 2px 10px;
