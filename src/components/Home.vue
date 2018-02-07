@@ -2,6 +2,7 @@
         <div class="home">
           <ul class="game-list" v-if="list.length != 0">
             <li class="game-item" v-for="  list in list.data.list">
+              <router-link :to="{ path: 'livedetail', query: { schid: list.schid }}">
               <div class="team left">
                 <img :src="list.visitteamlogo" class="left">
                 <div class="team-info right">
@@ -24,6 +25,7 @@
               <div class="team-news" v-if="list.title">
                 <i class="iangle">战报</i> {{list.title}}
               </div>
+              </router-link>
             </li>
           </ul>
           <div class="refesh-btn" @click="nab_schedule">

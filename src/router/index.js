@@ -6,7 +6,7 @@ import Rank from '@/components/Rank'
 import newsDetail from '@/components/newsDetail'
 import Statistics from '@/components/Statistics'
 import playerDetail from '@/components/playerDetail'
-
+import liveDetail from '@/components/liveDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -60,6 +60,14 @@ export default new Router({
       path: '/player_detail',
       name: 'playerDetail',
       component: playerDetail,
+      meta: {
+        title: "球员数据"
+      }
+    },
+    {
+      path: '/livedetail',
+      name: 'liveDetail',
+      component: liveDetail,
       meta: {
         title: "球员数据"
       }

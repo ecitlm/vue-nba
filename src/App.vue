@@ -35,8 +35,8 @@
 </script>
 
 <style>
-    .mint-header {
-        background: #00aa98;
+    #app .mint-header {
+        background: #00aa98 !important;
         font-size: 18px;
     }
 </style>
