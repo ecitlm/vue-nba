@@ -2,7 +2,7 @@
         <div class="home">
           <ul class="game-list" v-if="list.length != 0">
             <li class="game-item" v-for="  list in list.data.list">
-              <router-link :to="{ path: 'livedetail', query: { schid: list.schid }}">
+              <router-link :to="{ path: 'livedetail', query: { schid: list.schid,liveid:list.liveid }}">
               <div class="team left">
                 <img :src="list.visitteamlogo" class="left">
                 <div class="team-info right">

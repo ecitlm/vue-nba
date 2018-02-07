@@ -4,7 +4,7 @@
         <mt-button  icon="back" slot="left" onclick="window.history.back()"></mt-button>
     </mt-header>
 
-   <div class="mt44">
+   <div class="mt40">
      <keep-alive>
       <router-view/>
      </keep-alive>

@@ -69,7 +69,7 @@ export default new Router({
       name: 'liveDetail',
       component: liveDetail,
       meta: {
-        title: "球员数据"
+        title: "直播详情"
       }
     },
     {
