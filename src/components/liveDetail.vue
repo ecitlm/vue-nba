@@ -51,11 +51,44 @@
             <p>{{item.match_data[0].title}}</p>
             <img class='img-msg-image' :src='item.match_data[0].pic'>
           </div>
-
         </div>
       </div>
 
-      <div :class="current=='1' ? 'swiper-content' : 'swiper-content hide'">2222</div>
+      <div :class="current=='1' ? 'swiper-content' : 'swiper-content hide'">
+        <div class="data-title">实时赛况</div>
+        <table class="lincoapp-nba-table1" v-if="list.sec_scores[0]">
+          <thead>
+          <tr>
+            <td>球队</td>
+            <td>1节</td>
+            <td>2节</td>
+            <td>3节</td>
+            <td>4节</td>
+            <td>总分</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><img :src="list.t1_icon" alt=""></td>
+            <td>{{list.sec_scores[0]['score1'] || 0}}</td>
+            <td>{{list.sec_scores[1]['score1'] || 0}}</td>
+            <td>{{list.sec_scores[2]['score1'] || 0}}</td>
+            <td>{{list.sec_scores[3]['score1'] || 0}}</td>
+            <td>{{list.t1_point}}</td>
+          </tr>
+          <tr>
+            <td><img :src="list.t2_icon" alt=""></td>
+            <td>{{list.sec_scores[0]['score2'] || 0}}</td>
+            <td>{{list.sec_scores[1]['score2'] || 0}}</td>
+            <td>{{list.sec_scores[2]['score2'] || 0}}</td>
+            <td>{{list.sec_scores[3]['score2'] || 0 }}</td>
+            <td>{{list.t2_point}}</td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </div>
     </div>
 
   </div>
@@ -80,19 +113,20 @@
       return {
         current: "0",
         list: [],
-        content: []
+        content: [],
+        technical:[]
       }
     },
     activated() {
-      this.list=[];
-      this.content=[]
+      this.list = [];
+      this.content = []
       this.live_detail()
       this.live_content()
     },
     methods: {
       swiperTab(id) {
         this.current = id;
-        if(id==0){
+        if (id == 0) {
 
           this.live_content()
           this.live_detail()
@@ -119,6 +153,18 @@
           .then(function (res) {
             console.log(res)
             this.content = res.data;
+            Indicator.close();
+          }.bind(this)).catch(function (error) {
+          console.log(error)
+        })
+      },
+      technical_statistics(){
+        api.technical_statistics({
+          schid: this.$route.query.schid
+        })
+          .then(function (res) {
+            console.log(res)
+            this.technical = res.data;
             Indicator.close();
           }.bind(this)).catch(function (error) {
           console.log(error)
@@ -220,7 +266,7 @@
 
   .swiper-content {
     width: 100%;
-    padding: 0 15px;
+
     box-sizing: border-box;
   }
 
@@ -230,6 +276,7 @@
 
   .live-info {
     margin-top: 10px;
+    padding: 0 15px;
   }
 
   .live-info .speaker {
@@ -244,6 +291,7 @@
     border-radius: 50%;
     float: left;
     margin-right: 10px;
+    border: 1px solid #e3e3e3;
   }
 
   .live-speaker {
@@ -272,5 +320,33 @@
 
   .img-msg-image {
     width: 100%;
+  }
+
+  .lincoapp-nba-table1 {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+.data-title{
+  font-size:16px;
+  box-sizing: border-box;
+  padding:10px 15px ;
+}
+  .lincoapp-nba-table1 thead {
+    border-bottom: 1px solid #e8e8e8;
+    font-size:14px;
+  }
+
+  .lincoapp-nba-table1 thead tr {
+    background: #f8f8f8;
+    line-height:30px;
+
+  }
+  .lincoapp-nba-table1  td img{
+    width:30px;
+  }
+  .lincoapp-nba-table1  tr{
+    border-bottom:1px solid #e3e3e3;
   }
 </style>

@@ -32,5 +32,8 @@ export default {
   live_content(params) {
     return fetch.fetchPost('Nba.live_content', params);
   },
+  technical_statistics(params) {
+    return fetch.fetchPost('Nba.technical_statistics', params);
+  },
 
 }
