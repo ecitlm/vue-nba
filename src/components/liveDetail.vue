@@ -64,29 +64,61 @@
             <td>2节</td>
             <td>3节</td>
             <td>4节</td>
+            <td v-if="5<=list.sec_scores.length">OT1</td>
             <td>总分</td>
           </tr>
           </thead>
-          <tbody>
+
+          <tbody v-if="list.sec_scores[0].score2 !=0">
           <tr>
             <td><img :src="list.t1_icon" alt=""></td>
-            <td>{{list.sec_scores[0]['score1'] || 0}}</td>
-            <td>{{list.sec_scores[1]['score1'] || 0}}</td>
-            <td>{{list.sec_scores[2]['score1'] || 0}}</td>
-            <td>{{list.sec_scores[3]['score1'] || 0}}</td>
+            <template v-for="list in list.sec_scores" v-if="!list.sec_scores">
+              <td> {{ list.score1}}</td>
+            </template>
             <td>{{list.t1_point}}</td>
           </tr>
           <tr>
             <td><img :src="list.t2_icon" alt=""></td>
-            <td>{{list.sec_scores[0]['score2'] || 0}}</td>
-            <td>{{list.sec_scores[1]['score2'] || 0}}</td>
-            <td>{{list.sec_scores[2]['score2'] || 0}}</td>
-            <td>{{list.sec_scores[3]['score2'] || 0 }}</td>
+            <template v-for="list in list.sec_scores" v-if="!list.sec_scores">
+              <td> {{ list.score2}}</td>
+            </template>
             <td>{{list.t2_point}}</td>
           </tr>
-
           </tbody>
         </table>
+
+        <!--本场最佳球员-->
+        <div class="top-player" v-if="technical.topplayer.visit[0].length!=0">
+          <ul class="top-player-header">
+            <li style="text-align: left" class="top-player-header-item">篮网</li>
+            <li class="team-data">球员</li>
+            <li style="text-align: right" class="top-player-header-item">勇士</li>
+          </ul>
+          <div class="data-wrap">
+            <div class="top-player-item left">
+              <router-link v-for="list in technical.topplayer.visit"
+                           :to="{ path: 'player_detail', query: { playerid: list.id }}">
+                <li>{{list.name || "=="}}<span class="right">{{list.value || "=="}}</span></li>
+              </router-link>
+            </div>
+            <div class="top-player-title left">
+              <li>得分</li>
+              <li>篮板</li>
+              <li>助攻</li>
+              <li>抢断</li>
+              <li>盖帽</li>
+              <li>犯规</li>
+              <li>失误</li>
+            </div>
+            <div class="top-player-item right">
+              <router-link v-for="list in technical.topplayer.home"
+                           :to="{ path: 'player_detail', query: { playerid: list.id }}">
+                <li><span>{{list.value || "=="}}</span> <span class="right">{{list.name || "=="}}</span></li>
+              </router-link>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </div>
@@ -114,7 +146,7 @@
         current: "0",
         list: [],
         content: [],
-        technical:[]
+        technical: []
       }
     },
     activated() {
@@ -122,6 +154,7 @@
       this.content = []
       this.live_detail()
       this.live_content()
+      this.technical_statistics()
     },
     methods: {
       swiperTab(id) {
@@ -158,7 +191,7 @@
           console.log(error)
         })
       },
-      technical_statistics(){
+      technical_statistics() {
         api.technical_statistics({
           schid: this.$route.query.schid
         })
@@ -292,6 +325,9 @@
     float: left;
     margin-right: 10px;
     border: 1px solid #e3e3e3;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .live-speaker {
@@ -328,25 +364,69 @@
     border-collapse: collapse;
     border-spacing: 0;
   }
-.data-title{
-  font-size:16px;
-  box-sizing: border-box;
-  padding:10px 15px ;
-}
+
+  .data-title {
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+  }
+
   .lincoapp-nba-table1 thead {
     border-bottom: 1px solid #e8e8e8;
-    font-size:14px;
+    font-size: 14px;
   }
 
   .lincoapp-nba-table1 thead tr {
     background: #f8f8f8;
-    line-height:30px;
+    line-height: 30px;
 
   }
-  .lincoapp-nba-table1  td img{
-    width:30px;
+
+  .lincoapp-nba-table1 td img {
+    width: 30px;
   }
-  .lincoapp-nba-table1  tr{
-    border-bottom:1px solid #e3e3e3;
+
+  .lincoapp-nba-table1 tr {
+    border-bottom: 1px solid #e3e3e3;
+  }
+
+  .top-player-header {
+    width: 100%;
+    height: 40px;
+    background: #f8f8f8;
+    padding: 0 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .top-player-header li {
+    float: left;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .top-player-item, .top-player-header-item {
+    width: 37%;
+  }
+
+  .top-player-title, .team-data {
+    width: 26%;
+    text-align: center;
+  }
+
+  .top-player-title li, .top-player-item li {
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 6px 0;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+
+  }
+
+  .data-wrap {
+    padding: 0 15px;
   }
 </style>
