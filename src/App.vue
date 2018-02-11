@@ -10,11 +10,12 @@
      </keep-alive>
    </div>
 
-   <div class="navbar" v-show="$route.meta.navShow">
+   <div class="navbar" v-if="$route.meta.navShow">
        <div class="mt60"></div>
         <tab-bar></tab-bar>
    </div>
   </div>
+
 </template>
 <script>
     import tabBar from './components/tabBar'

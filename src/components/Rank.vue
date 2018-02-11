@@ -22,12 +22,12 @@
           </tr>
           </thead>
           <tbody class="tbody">
-          <tr v-for="(item,index) in data.east">
-            <td><i class="left">{{index+1}}</i> {{item.name}}</td>
-            <td>{{item.wins}}</td>
-            <td>{{item.losses}}</td>
-            <td>{{item['wining-percentage']}}%</td>
-            <td>{{item['games-back'] }}</td>
+          <tr v-for="(item,index) in data.east" @click="linkTeamInfo(item.teamId)">
+              <td><i class="left">{{index + 1}}</i> {{item.name}}</td>
+              <td>{{item.wins}}</td>
+              <td>{{item.losses}}</td>
+              <td>{{item['wining-percentage']}}%</td>
+              <td>{{item['games-back'] }}</td>
           </tr>
           </tbody>
         </table>
@@ -45,12 +45,12 @@
           </tr>
           </thead>
           <tbody class="tbody">
-          <tr v-for="(item,index) in data.west">
-            <td><i class="left">{{index+1}}</i> {{item.name}}</td>
-            <td>{{item.wins}}</td>
-            <td>{{item.losses}}</td>
-            <td>{{item['wining-percentage']}}%</td>
-            <td>{{item['games-back'] }}</td>
+          <tr v-for="(item,index) in data.west" @click="linkTeamInfo(item.teamId)">
+              <td><i class="left">{{index + 1}}</i> {{item.name}}</td>
+              <td>{{item.wins}}</td>
+              <td>{{item.losses}}</td>
+              <td>{{item['wining-percentage']}}%</td>
+              <td>{{item['games-back'] }}</td>
           </tr>
           </tbody>
         </table>
@@ -61,83 +61,88 @@
 
 
 <script>
-    import Vue from 'vue'
-    import {
-        Navbar,
-        TabItem
-    } from 'mint-ui';
-    import api from '../utils/api'
-    Vue.component(Navbar.name, Navbar);
-    Vue.component(TabItem.name, TabItem);
-    import {
-        Indicator
-    } from 'mint-ui';
-    export default {
-        data() {
-            return {
-                selected: "1",
-                data: []
-            }
-        },
-        created() {
+  import Vue from 'vue'
+  import {
+    Navbar,
+    TabItem
+  } from 'mint-ui';
+  import api from '../utils/api'
 
-            this.team_rank();
-        },
-        methods: {
-            team_rank() {
-                Indicator.open('加载中...');
-                api.team_rank()
-                    .then(function(res) {
-                        console.log(res)
-                        this.data = res.data;
-                        Indicator.close();
-                    }.bind(this)).catch(function(error) {
-                        console.log(error)
-                    })
-            }
+  Vue.component(Navbar.name, Navbar);
+  Vue.component(TabItem.name, TabItem);
+  import {
+    Indicator
+  } from 'mint-ui';
 
-        }
+  export default {
+    data() {
+      return {
+        selected: "1",
+        data: []
+      }
+    },
+    created() {
+
+      this.team_rank();
+    },
+    methods: {
+      team_rank() {
+        Indicator.open('加载中...');
+        api.team_rank()
+          .then(function (res) {
+            console.log(res)
+            this.data = res.data;
+            Indicator.close();
+          }.bind(this)).catch(function (error) {
+          console.log(error)
+        })
+      },
+      linkTeamInfo(teamId){
+        this.$router.push({path: '/teaminfo', query: { teamId: teamId}});
+      }
+
     }
+  }
 </script>
 
 
 <style scoped>
-    .mint-navbar .mint-tab-item.is-selected {
-        color: #00aa98;
-        border-bottom: 0;
-    }
+  .mint-navbar .mint-tab-item.is-selected {
+    color: #00aa98;
+    border-bottom: 0;
+  }
 
-    #tabitem {
-        font-size: 16px !important;
-    }
+  #tabitem {
+    font-size: 16px !important;
+  }
 
-    table {
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-    }
+  table {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
 
-    .thead {
-        background: #f5f5f5;
-    }
+  .thead {
+    background: #f5f5f5;
+  }
 
-    .thead tr td {
-        width: 20%;
-        text-align: center;
-        border-collapse: collapse;
-        line-height: 40px
-    }
+  .thead tr td {
+    width: 20%;
+    text-align: center;
+    border-collapse: collapse;
+    line-height: 40px
+  }
 
-    .tbody tr {
-        border-bottom: 1px solid #e3e3e3;
-        line-height: 30px;
-    }
+  .tbody tr {
+    border-bottom: 1px solid #e3e3e3;
+    line-height: 30px;
+  }
 
-    .tbody tr:nth-child(even) {
-        background: #f5f5f5;
-    }
+  .tbody tr:nth-child(even) {
+    background: #f5f5f5;
+  }
 
-    .tbody i {
-        margin-left: 5px;
-    }
+  .tbody i {
+    margin-left: 5px;
+  }
 </style>

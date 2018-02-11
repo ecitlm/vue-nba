@@ -56,36 +56,32 @@
 
       <div :class="current=='1' ? 'swiper-content' : 'swiper-content hide'">
         <div class="data-title">实时赛况</div>
-        <table class="lincoapp-nba-table1" v-if="list.sec_scores[0]">
-          <thead>
-          <tr>
-            <td>球队</td>
-            <td>1节</td>
-            <td>2节</td>
-            <td>3节</td>
-            <td>4节</td>
-            <td v-if="5<=list.sec_scores.length">OT1</td>
-            <td>总分</td>
-          </tr>
-          </thead>
+        <div class="lincoapp-nba-table1" v-if="list.sec_scores[0]">
+            <span>球队</span>
+            <span>1节</span>
+            <span>2节</span>
+            <span>3节</span>
+            <span>4节</span>
+            <span v-if="5<=list.sec_scores.length">OT1</span>
+            <span>总分</span>
+        </div>
 
-          <tbody v-if="list.sec_scores[0].score2 !=0">
-          <tr>
-            <td><img :src="list.t1_icon" alt=""></td>
+        <div v-if="list.sec_scores[0].score2 !=0" style="width: 100%">
+          <div class="querare">
+            <span><img :src="list.t1_icon" alt="" class="small-logo"></span>
             <template v-for="list in list.sec_scores" v-if="!list.sec_scores">
-              <td> {{ list.score1}}</td>
+              <span> {{ list.score1}}</span>
             </template>
-            <td>{{list.t1_point}}</td>
-          </tr>
-          <tr>
-            <td><img :src="list.t2_icon" alt=""></td>
+            <span>{{list.t1_point}}</span>
+          </div>
+          <div class="querare">
+            <span><img :src="list.t2_icon" alt="" class="small-logo"></span>
             <template v-for="list in list.sec_scores" v-if="!list.sec_scores">
-              <td> {{ list.score2}}</td>
+              <span> {{ list.score2}}</span>
             </template>
-            <td>{{list.t2_point}}</td>
-          </tr>
-          </tbody>
-        </table>
+            <span>{{list.t2_point}}</span>
+          </div>
+        </div>
 
         <!--本场最佳球员-->
         <div class="top-player" v-if="technical.topplayer.visit[0].length!=0">
@@ -371,24 +367,18 @@
     padding: 10px 15px;
   }
 
-  .lincoapp-nba-table1 thead {
-    border-bottom: 1px solid #e8e8e8;
-    font-size: 14px;
-  }
 
-  .lincoapp-nba-table1 thead tr {
-    background: #f8f8f8;
-    line-height: 30px;
+
+  .lincoapp-nba-table1{
+    display: flex;
+    background: #f4f4f4;
+    padding:5px 0;
 
   }
-
-  .lincoapp-nba-table1 td img {
-    width: 30px;
+  .lincoapp-nba-table1 span{
+    flex:1;
   }
 
-  .lincoapp-nba-table1 tr {
-    border-bottom: 1px solid #e3e3e3;
-  }
 
   .top-player-header {
     width: 100%;
@@ -428,5 +418,20 @@
 
   .data-wrap {
     padding: 0 15px;
+  }
+.querare{
+  width:100%;
+  display:flex;
+}
+  .small-logo {
+    width: 30px;
+
+
+  }
+  .querare span{
+    flex:1;
+    text-align: center;
+    line-height:25px;
+    height:25px;
   }
 </style>

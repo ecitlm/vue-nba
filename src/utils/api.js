@@ -35,5 +35,8 @@ export default {
   technical_statistics(params) {
     return fetch.fetchPost('Nba.technical_statistics', params);
   },
+  team_info(params) {
+    return fetch.fetchPost('Nba.team_info', params);
+  }
 
 }

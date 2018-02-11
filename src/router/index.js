@@ -7,6 +7,8 @@ import newsDetail from '@/components/newsDetail'
 import Statistics from '@/components/Statistics'
 import playerDetail from '@/components/playerDetail'
 import liveDetail from '@/components/liveDetail'
+import teamInfo from '@/components/teamInfo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -70,6 +72,14 @@ export default new Router({
       component: liveDetail,
       meta: {
         title: "直播详情"
+      }
+    },
+    {
+      path: '/teaminfo',
+      name: 'teamInfo',
+      component: teamInfo,
+      meta: {
+        title: "球队信息"
       }
     },
     {
