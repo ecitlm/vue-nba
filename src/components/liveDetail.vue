@@ -82,9 +82,8 @@
             <span>{{list.t2_point}}</span>
           </div>
         </div>
-
         <!--本场最佳球员-->
-        <div class="top-player" v-if="technical.topplayer.visit[0].length!=0">
+        <div class="top-player" v-if="technical.topplayer.visit">
           <ul class="top-player-header">
             <li style="text-align: left" class="top-player-header-item">篮网</li>
             <li class="team-data">球员</li>
@@ -142,7 +141,7 @@
         current: "0",
         list: [],
         content: [],
-        technical: []
+        technical: ""
       }
     },
     activated() {
@@ -193,7 +192,7 @@
         })
           .then(function (res) {
             console.log(res)
-            this.technical = res.data;
+            this.technical = res.data ;
             Indicator.close();
           }.bind(this)).catch(function (error) {
           console.log(error)
