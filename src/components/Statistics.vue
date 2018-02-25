@@ -59,8 +59,9 @@
         },
         methods: {
             tabNav(current, name) {
-                this.current = current
-                this.stats = this.data[current]
+                this.current = current;
+                this.stats = this.data[current];
+		this.name=name;
             },
             player_top() {
                 Indicator.open('加载中...');

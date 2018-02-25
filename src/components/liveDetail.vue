@@ -83,14 +83,14 @@
           </div>
         </div>
         <!--本场最佳球员-->
-        <div class="top-player" v-if="technical.topplayer.visit">
+        <div class="top-player" v-if="technical.topplayer">
           <ul class="top-player-header">
-            <li style="text-align: left" class="top-player-header-item">篮网</li>
+            <li style="text-align: left" class="top-player-header-item">{{list.t1_name}}</li>
             <li class="team-data">球员</li>
-            <li style="text-align: right" class="top-player-header-item">勇士</li>
+            <li style="text-align: right" class="top-player-header-item">{{list.t2_name}}</li>
           </ul>
           <div class="data-wrap">
-            <div class="top-player-item left">
+            <div class="top-player-item left" v-if="technical.topplayer">
               <router-link v-for="list in technical.topplayer.visit"
                            :to="{ path: 'player_detail', query: { playerid: list.id }}">
                 <li>{{list.name || "=="}}<span class="right">{{list.value || "=="}}</span></li>
@@ -105,7 +105,7 @@
               <li>犯规</li>
               <li>失误</li>
             </div>
-            <div class="top-player-item right">
+            <div class="top-player-item right" v-if="technical.topplayer">
               <router-link v-for="list in technical.topplayer.home"
                            :to="{ path: 'player_detail', query: { playerid: list.id }}">
                 <li><span>{{list.value || "=="}}</span> <span class="right">{{list.name || "=="}}</span></li>
@@ -139,9 +139,9 @@
     data() {
       return {
         current: "0",
-        list: [],
+        list: null,
         content: [],
-        technical: ""
+        technical: null
       }
     },
     activated() {
